@@ -1,2 +1,4 @@
 # Music-for-Mouse-and-Keyboard
 A browser-based percussion score for the solo performer.
+
+The user enacts a deadpan piece of percussion music using only their keyboard and mouse (or trackpad). Drawing on traditions of musique concrète, incidental music, and Duchampian/John Cage-style chance, players are shown a series of prompts that they must complete before moving on to the next one. Instead of traditional musical notation, this score exists as plain text: "Press and hold the SHIFT key for thirty-one seconds," "Left click seventy-five times" and so forth. In the relative "silence" of these simple acts, players may begin to pay closer attention to the sounds of their keystrokes and mouse clicks, the drone of their computer, their breath, and the everyday music of their immediate surroundings.
