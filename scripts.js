@@ -3,19 +3,31 @@ const prompts = [
     "id": "prompt-1",
     "domEvent": "click",
     "amount": 3,
-    "text": "Click the left mouse button 3 times"
+    "text": "Click the left mouse button 3 times."
   },
   {
     "id": "prompt-2",
-    "domEvent": "click",
-    "amount": 5,
-    "text": "Click the left mouse button 5 times"
+    "domEvent": "keydown",
+    "amount": 3,
+    "text": "Hit the spacebar 3 times."
   },
   {
     "id": "prompt-3",
+    "domEvent": "click",
+    "amount": 15,
+    "text": "Click the left mouse button 15 times."
+  },
+  {
+    "id": "prompt-4",
     "domEvent": "keydown",
     "amount": 3,
-    "text": "Hit the spacebar 3 times"
+    "text": "Hit the spacebar 3 times."
+  },
+  {
+    "id": "prompt-5",
+    "domEvent": "keydown",
+    "amount": 3,
+    "text": "Press and hold the shift key for 7 seconds."
   }
 ]
 
@@ -34,6 +46,9 @@ console.log("UPDATED PROMPT IS:", JSON.stringify(prompt))
 updateTheDom("performance-prompt", prompt.text) 
 }
 
+
+// CLICK COUNTER FUNCTION
+
 document.addEventListener("click", clickHandler);
 
 let numberOfClicks = 0;
@@ -51,4 +66,25 @@ function clickHandler(){
   if (currentPrompt["domEvent"] === "click") {
     countClicks(currentPrompt)
   } 
+}
+
+// KEYDOWN COUNTER FUNCTION
+
+document.addEventListener("keydown", keyDownHandler)
+
+let numberOfKeyDowns = 0;
+
+function countKeyDowns(currentPrompt){
+  numberOfKeyDowns = numberOfKeyDowns + 1
+  if (numberOfKeyDowns === currentPrompt["amount"]){
+    numberOfKeyDowns = 0
+    updatePrompt();
+  }
+}
+
+function keyDownHandler(){
+  const currentPrompt = prompts[promptIndex];
+  if (currentPrompt["domEvent"] === "keydown") {
+    countKeyDowns(currentPrompt)
+  }
 }
