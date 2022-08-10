@@ -1,6 +1,7 @@
 body {
     overflow: hidden;
-    background: rgb(255, 244, 96);
+    /* background: rgba(0, 0, 0, 0.1); */
+    background: rgba(250, 246, 181, 0.65);
 }
 
 h1 {
@@ -8,6 +9,8 @@ h1 {
     font-weight: 400;
     font-style: normal;
     font-size: 6em;
+    /* color:rgb(241, 108, 36); */
+    color:rgb(36, 36, 36);
     text-align: center;
 }
 
@@ -16,5 +19,6 @@ p {
     font-weight: 300;
     font-style: normal;
     font-size: 1.5em;
+    color:rgb(36, 36, 36);
     text-align: center;
 }
