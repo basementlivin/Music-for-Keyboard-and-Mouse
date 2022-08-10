@@ -34,19 +34,21 @@ console.log("UPDATED PROMPT IS:", JSON.stringify(prompt))
 updateTheDom("performance-prompt", prompt.text) 
 }
 
-document.addEventListener("click", countClicks);
+document.addEventListener("click", clickHandler);
 
 let numberOfClicks = 0;
 
-function countClicks(){
+function countClicks(currentPrompt){
+  numberOfClicks = numberOfClicks + 1
+  if (numberOfClicks === currentPrompt["amount"]) {
+    numberOfClicks = 0
+    updatePrompt();
+  }
+}
+
+function clickHandler(){
   const currentPrompt = prompts[promptIndex];
   if (currentPrompt["domEvent"] === "click") {
-     numberOfClicks = numberOfClicks + 1
-
-     if (numberOfClicks === currentPrompt["amount"]) {
-      numberOfClicks = 0
-      updatePrompt();
-      }
-
+    countClicks(currentPrompt)
   } 
 }
