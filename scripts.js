@@ -19,6 +19,8 @@ const prompts = [
     }
    ]
 
+let prompt = 0;
+
 
 // const sheetMusic = document.getElementsByClassName("sheet-music");
 // const performance = document.getElementsByClassName("performance-prompt");
@@ -28,7 +30,9 @@ const prompts = [
 document.addEventListener("click", countClicks);
 
 function countClicks(){
-    console.log("YOU'RE ONTO SOMETHING, PAL") //works!
+    // console.log("YOU'RE ONTO SOMETHING, PAL") //works!
+    prompt = prompt + 1
+    // console.log("NEW VALUE OF PROMPT IS: " + prompt) // works! Count goes up with each click.
 }
 
 // Write a function that will log the amount of time a certain key is held down. When the appropriate amount of time is reached, the next prompt should be triggered.
@@ -38,4 +42,19 @@ document.addEventListener("keydown", countKeyDown);
 function countKeyDown() {
     let shiftCount = 0; // code for both the left and right SHIFT keys = 16
     console.log("Every. Senior. Citizen. Needs. Life Alert.") // works!
+}
+
+
+document.addEventListener("click", clickity);
+
+function updateTheDom(domId, newText){
+  console.log("You updated the dom!")
+  document.getElementById(domId).innerHTML = newText;
+}
+
+function clickity(){
+    // console.log("Great clicking technique!") // works!
+    const domId = "performance-prompt"
+    const newText = "You are beginning to understand how this works. Keep hustling, Erik!"
+    updateTheDom("performance-prompt", newText)
 }
