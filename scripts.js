@@ -37,5 +37,14 @@ updateTheDom("performance-prompt", prompt.text)
 document.addEventListener("click", countClicks);
 
 function countClicks(){
- updatePrompt()
+  const currentPrompt = prompts[promptIndex];
+  if (currentPrompt["domEvent"] === "click") {
+    console.log("Now what we have here is a Click Prompt, plain and simple.")
+
+  // console.log("THE CURRENT PROMPT IS:", currentPrompt) //works! returns objects from 'prompts' in succession
+  
+  updatePrompt()
+  } else {
+    console.log("I've seen a whole lotta Click Prompts in my day and, well, that ain't a Click Prompt.")
+  }
 }
