@@ -19,7 +19,7 @@ const prompts = [
     }
    ]
 
-let prompt = 0;
+let promptIndex = 0;
 
 
 // const sheetMusic = document.getElementsByClassName("sheet-music");
@@ -29,10 +29,16 @@ let prompt = 0;
 // Write a function that will count the number of clicks (within the document), then trigger the next prompt when the appropriate number of clicks have been clicked.
 document.addEventListener("click", countClicks);
 
+function updatePrompt(){
+  const newPromptIndex = promptIndex + 1
+  promptIndex = newPromptIndex 
+  const prompt = prompts[newPromptIndex] 
+  console.log("UPDATED PROMPT IS:", JSON.stringify(prompt)) 
+  updateTheDom("performance-prompt", prompt.text) // may need to use prompt["text"] if prompt.text throws errors
+}
+
 function countClicks(){
-    // console.log("YOU'RE ONTO SOMETHING, PAL") //works!
-    prompt = prompt + 1
-    // console.log("NEW VALUE OF PROMPT IS: " + prompt) // works! Count goes up with each click.
+    updatePrompt()
 }
 
 // Write a function that will log the amount of time a certain key is held down. When the appropriate amount of time is reached, the next prompt should be triggered.
