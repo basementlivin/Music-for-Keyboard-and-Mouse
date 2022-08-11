@@ -9,7 +9,7 @@ const prompts = [
     "id": "prompt-2",
     "domEvent": "keydown",
     "amount": 3,
-    "keyCode": 32, // todo: require the keyCode to match the prompt; right now, users can press any key and the function will work & proceed to the next prompt.
+    // keyCode: Space, // todo: require the keyCode to match the prompt; right now, users can press any key and the function will work & proceed to the next prompt.
     "text": "Hit the spacebar 3 times."
   },
   {
@@ -22,15 +22,15 @@ const prompts = [
     "id": "prompt-4",
     "domEvent": "keydown",
     "amount": 3,
-    "keyCode": 49,
+    // keyCode: Digit1,
     "text": "Hit the 1 key 3 times."
   },
   {
     "id": "prompt-5",
     "domEvent": "keyhold",
-    "time": Date.now,  // could the function start counting from the user's time on keyDown?
-    "duration": 7000,
-    "text": "Press and hold the G key for 7 seconds."
+    "duration": 4000,
+    // keyCode: KeyG,
+    "text": "Press and hold the G key for 4 seconds."
   }
 ]
 
@@ -80,6 +80,7 @@ function clickHandler(){
 document.addEventListener("keydown", keyDownHandler)
 
 let numberOfKeyDowns = 0;
+let key = KeyboardEvent.keyCode
 
 function countKeyDowns(currentPrompt){
   numberOfKeyDowns = numberOfKeyDowns + 1
@@ -100,68 +101,32 @@ function keyDownHandler(){
 // CALCULATE TIME BETWEEN KEYDOWN AND KEYUP EVENTS
 // should probably set event.repeat to false so that keydown doesn't log the repeating characters that occus when you hold down a key.
 
-let startTime = Date.now();
-let elapsedTime = ((Date.now() - startTime) / 1000);
-document.addEventListener("keyhold", keyDownHandler)
 
-function keyDownCounter() {
-  elapsedTime = 0;
-  keyDownCounter = elapsedTime++
-  if (keyDownCounter === currentPrompt["duration"]){
-    elapsedTime = 0
-    updatePrompt();
+
+let startTime = null;
+let keyDownAllowed = true; 
+
+
+document.addEventListener("keydown", keyHoldHandler)
+document.addEventListener("keyup", keyUpHandler)
+
+function keyHoldHandler(event){
+
+  if (event.repeat != undefined) {
+    keyDownAllowed = !event.repeat;
   }
+  if (!keyDownAllowed) return;
+  keyDownAllowed = false;
+
+  startTime = Date.now(); 
+  console.log("KEY DOWN AT:", startTime)
 }
 
-function keyDownHandler(){
-  const currentPrompt = prompts[promptIndex];
-  if (currentPrompt["domEvent"] === "keyhold") {
-    keyDownCounter(currentPrompt)
-  }
+function keyUpHandler(){
+  let endTime = Date.now(); 
+  console.log("KEY UP AT:", endTime)
+  let elapsedTime = endTime - startTime
+  console.log("ELAPSED TIME IN MILLISECONDS:", elapsedTime)
+  keyDownAllowed = true;
+  startTime = null; // note that i added this here too!!
 }
-
-
-// let elapsedTime = 0
-// let keyDownTracker = null
-
-// document.addEventListener("keyhold", keyDownHandler)
-// document.addEventListener("keyhold", keyUpHandler)
-
-// function keyDownHandler(){
-//     elapsedTime = 0;
-//     keyDownTracker = setInterval(function(){
-//         elapsedTime++;
-//         console.log("Seconds passed since you lifted your finger off the keyboard: " + elapsedTime);
-//     }, 1000, clearInterval(keyDownTracker));
-    // console.log("keyDownTracker is:", keyDownTracker)
-// }
-
-// function keyUpHandler(){
-//   console.log("KEY UP HANDLER CALLED", keyDownTracker)
-//   clearInterval(keyDownTracker);
-//   keyDownTracker = null;
-// }
-
-
-
-
-// let elapsedTime = 0
-// let keyDownTracker = null
-
-// document.addEventListener("keydown", keyDownHandler)
-// document.addEventListener("keyup", keyUpHandler)
-
-// function keyDownHandler(){
-//     elapsedTime = 0;
-//     keyDownTracker = setInterval(function(){
-//         elapsedTime++;
-//         console.log("SET INTERVAL FIRED OFF!");
-//     }, 1000);
-//     console.log("keyDownTracker is:", keyDownTracker)
-// }
-
-// function keyUpHandler(){
-//   console.log("KEY UP HANDLER CALLED", keyDownTracker)
-//   clearInterval(keyDownTracker);
-//   keyDownTracker = null;
-// }
