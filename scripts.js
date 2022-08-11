@@ -99,13 +99,9 @@ function keyDownHandler(){
 
 
 // CALCULATE TIME BETWEEN KEYDOWN AND KEYUP EVENTS
-// should probably set event.repeat to false so that keydown doesn't log the repeating characters that occus when you hold down a key.
-
-
 
 let startTime = null;
 let keyDownAllowed = true; 
-
 
 document.addEventListener("keydown", keyHoldHandler)
 document.addEventListener("keyup", keyUpHandler)
@@ -124,9 +120,15 @@ function keyHoldHandler(event){
 
 function keyUpHandler(){
   let endTime = Date.now(); 
-  console.log("KEY UP AT:", endTime)
-  let elapsedTime = endTime - startTime
-  console.log("ELAPSED TIME IN MILLISECONDS:", elapsedTime)
+  let elapsedTime = endTime - startTime;
   keyDownAllowed = true;
-  startTime = null; // note that i added this here too!!
+  startTime = null;
+  let currentPrompt = prompts[promptIndex];
+  let promptDuration = currentPrompt["duration"];
+  let userHeldDownKeyLongEnough = elapsedTime >= promptDuration;
+
+  if (userHeldDownKeyLongEnough) {
+      elapsedTime = 0
+      updatePrompt();
+  }
 }
