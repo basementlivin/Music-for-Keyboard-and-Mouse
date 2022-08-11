@@ -98,22 +98,70 @@ function keyDownHandler(){
 
 
 // CALCULATE TIME BETWEEN KEYDOWN AND KEYUP EVENTS
+// should probably set event.repeat to false so that keydown doesn't log the repeating characters that occus when you hold down a key.
 
-document.addEventListener("keyhold", keyHoldHandler)
+let startTime = Date.now();
+let elapsedTime = ((Date.now() - startTime) / 1000);
+document.addEventListener("keyhold", keyDownHandler)
 
-let keyDownTime = 0;
-
-function calculateKeyDownTime(currentPrompt){
-  keyDownTime = keyDownTime + 1
-  if (keyDownTime === currentPrompt["time" + "duration"]){
-    keyDownTime = 0
+function keyDownCounter() {
+  elapsedTime = 0;
+  keyDownCounter = elapsedTime++
+  if (keyDownCounter === currentPrompt["duration"]){
+    elapsedTime = 0
     updatePrompt();
   }
 }
 
-function keyHoldHandler(){
+function keyDownHandler(){
   const currentPrompt = prompts[promptIndex];
   if (currentPrompt["domEvent"] === "keyhold") {
-    calculateKeyDownTime(currentPrompt)
+    keyDownCounter(currentPrompt)
   }
 }
+
+
+// let elapsedTime = 0
+// let keyDownTracker = null
+
+// document.addEventListener("keyhold", keyDownHandler)
+// document.addEventListener("keyhold", keyUpHandler)
+
+// function keyDownHandler(){
+//     elapsedTime = 0;
+//     keyDownTracker = setInterval(function(){
+//         elapsedTime++;
+//         console.log("Seconds passed since you lifted your finger off the keyboard: " + elapsedTime);
+//     }, 1000, clearInterval(keyDownTracker));
+    // console.log("keyDownTracker is:", keyDownTracker)
+// }
+
+// function keyUpHandler(){
+//   console.log("KEY UP HANDLER CALLED", keyDownTracker)
+//   clearInterval(keyDownTracker);
+//   keyDownTracker = null;
+// }
+
+
+
+
+// let elapsedTime = 0
+// let keyDownTracker = null
+
+// document.addEventListener("keydown", keyDownHandler)
+// document.addEventListener("keyup", keyUpHandler)
+
+// function keyDownHandler(){
+//     elapsedTime = 0;
+//     keyDownTracker = setInterval(function(){
+//         elapsedTime++;
+//         console.log("SET INTERVAL FIRED OFF!");
+//     }, 1000);
+//     console.log("keyDownTracker is:", keyDownTracker)
+// }
+
+// function keyUpHandler(){
+//   console.log("KEY UP HANDLER CALLED", keyDownTracker)
+//   clearInterval(keyDownTracker);
+//   keyDownTracker = null;
+// }
