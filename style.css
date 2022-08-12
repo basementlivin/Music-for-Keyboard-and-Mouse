@@ -9,10 +9,7 @@ body {
     justify-content: center;
     align-items: center;
     align-content: center;
-    /* min-width: 100%; */
     min-height: 100vh;
-    /* top: 0;
-    bottom: 0; */
     animation-delay: 2s;
     animation-duration: 3.5s;
     animation-timing-function: ease;
@@ -55,35 +52,41 @@ p {
 #splash-background {
     position: absolute;
     z-index: -1;
-    /* min-height: 100vh; */
-    /* min-width: 100vw; */
 }
 
 #sheet-music {
-    position: relative;
+    position: absolute;
     z-index: -2;
-    animation-delay: 1s;
+    top: 400px;
+    left: 100px;
+    right: 100px;
+
+
+    /* display: grid;
+    grid-template-columns: 18% auto 18%; */
+
+    /* animation-delay: 1s;
     animation-duration: 1s;
     animation-timing-function: ease;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-    animation-name: sight-reading;
+    animation-name: sight-reading; */
 }
 
-@keyframes sight-reading {
+/* @keyframes sight-reading {
     from {
-        transform: translateY(0%);
+        transform: translateY(-65%);
     }
     to {
-        transform: translateY(-365%);
+        transform: translateY(-200%);
     }
-}
+} */
 
 h1 {
     font-family: forma-djr-deck, sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 5em;
+    font-size: 4em;
     color:rgb(36, 36, 36);
     text-align: center;
 }
