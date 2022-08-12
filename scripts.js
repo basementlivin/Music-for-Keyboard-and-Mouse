@@ -9,8 +9,8 @@ const prompts = [
     "id": "prompt-2",
     "domEvent": "keydown",
     "amount": 3,
-    // keyCode: Space, // todo: require the keyCode to match the prompt; right now, users can press any key and the function will work & proceed to the next prompt.
-    "text": "Hit the spacebar 3 times."
+    "keyCode": "KeyH" || 72,
+    "text": "Tap the H key 3 times."
   },
   {
     "id": "prompt-3",
@@ -22,33 +22,39 @@ const prompts = [
     "id": "prompt-4",
     "domEvent": "keydown",
     "amount": 3,
-    // keyCode: Digit1,
+    "keyCode": "Digit1" || 49,
     "text": "Hit the 1 key 3 times."
   },
   {
     "id": "prompt-5",
     "domEvent": "keyhold",
     "duration": 4000,
-    // keyCode: KeyG,
-    "text": "Press and hold the G key for 4 seconds."
+    "keyCode": "KeyG",
+    "text": "Press and hold the G key for 4 seconds, then lift."
+  },
+  {
+    "id": "prompt-6",
+    "domEvent": "click",
+    "amount": 40,
+    "text": "Click the left mouse button 40 times."
   }
 ]
 
 let promptIndex = 0;
 
 function updateTheDom(domId, newText){
-console.log("You updated the dom!")
+// console.log("You updated the dom!")
 document.getElementById(domId).innerHTML = newText;
 }
 
 function updatePrompt(){
   const newPromptIndex = promptIndex + 1
   if (newPromptIndex > (prompts.length - 1)) {
-    console.log("oh no! we already did all the prompts! what should we do now?!")
+    console.log("Write more prompts, brotherman!")
   } else {
     promptIndex = newPromptIndex
     const prompt = prompts[newPromptIndex] 
-    console.log("UPDATED PROMPT IS:", JSON.stringify(prompt)) 
+    // console.log("UPDATED PROMPT IS:", JSON.stringify(prompt)) 
     updateTheDom("performance-prompt", prompt.text) 
   }
 }
@@ -80,23 +86,22 @@ function clickHandler(){
 document.addEventListener("keydown", keyDownHandler)
 
 let numberOfKeyDowns = 0;
-let key = KeyboardEvent.keyCode
 
-function countKeyDowns(currentPrompt){
+function countKeyDowns(currentPrompt, eventCode){
   numberOfKeyDowns = numberOfKeyDowns + 1
-  if (numberOfKeyDowns === currentPrompt["amount"]){
+  if (eventCode === currentPrompt["keyCode"] && numberOfKeyDowns === currentPrompt["amount"]){
     numberOfKeyDowns = 0
     updatePrompt();
   }
 }
 
-function keyDownHandler(){
+function keyDownHandler(KeyboardEvent){
+  console.log("Let me tell you about this key:", KeyboardEvent.code)
   const currentPrompt = prompts[promptIndex];
   if (currentPrompt["domEvent"] === "keydown") {
-    countKeyDowns(currentPrompt)
+    countKeyDowns(currentPrompt, KeyboardEvent.code)
   }
 }
-
 
 // CALCULATE TIME BETWEEN KEYDOWN AND KEYUP EVENTS
 
@@ -115,7 +120,6 @@ function keyHoldHandler(event){
   keyDownAllowed = false;
 
   startTime = Date.now(); 
-  console.log("KEY DOWN AT:", startTime)
 }
 
 function keyUpHandler(){
