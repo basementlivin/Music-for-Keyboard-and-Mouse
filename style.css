@@ -10,6 +10,21 @@ body {
     justify-content: center;
     align-items: center;
     align-content: center;
+    animation-delay: 8s;
+    animation-duration: 3.5s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-name: good-riddance;
+}
+
+@keyframes good-riddance {
+    from {
+        transform: translateY(0%);
+    }
+    to {
+        transform: translateY(-250%);
+    }
 }
 
 #main-title {
