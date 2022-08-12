@@ -43,7 +43,6 @@ const prompts = [
 let promptIndex = 0;
 
 function updateTheDom(domId, newText){
-// console.log("You updated the dom!")
 document.getElementById(domId).innerHTML = newText;
 }
 
@@ -53,8 +52,7 @@ function updatePrompt(){
     console.log("Write more prompts, brotherman!")
   } else {
     promptIndex = newPromptIndex
-    const prompt = prompts[newPromptIndex] 
-    // console.log("UPDATED PROMPT IS:", JSON.stringify(prompt)) 
+    const prompt = prompts[newPromptIndex]  
     updateTheDom("performance-prompt", prompt.text) 
   }
 }

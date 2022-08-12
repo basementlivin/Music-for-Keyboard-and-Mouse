@@ -1,6 +1,5 @@
 body {
     overflow: hidden;
-    /* background: rgba(0, 0, 0, 0.1); */
     background: rgba(250, 246, 181, 0.65);
 }
 
@@ -10,7 +9,11 @@ body {
     justify-content: center;
     align-items: center;
     align-content: center;
-    animation-delay: 8s;
+    /* min-width: 100%; */
+    min-height: 100vh;
+    /* top: 0;
+    bottom: 0; */
+    animation-delay: 2s;
     animation-duration: 3.5s;
     animation-timing-function: ease;
     animation-iteration-count: 1;
@@ -23,7 +26,7 @@ body {
         transform: translateY(0%);
     }
     to {
-        transform: translateY(-250%);
+        transform: translateY(-175%);
     }
 }
 
@@ -50,12 +53,30 @@ p {
 }
 
 #splash-background {
-    position: fixed;
+    position: absolute;
     z-index: -1;
-    top: 0;
-    left: 0;
-    min-width: 100%;
-    min-height: 100%;
+    /* min-height: 100vh; */
+    /* min-width: 100vw; */
+}
+
+#sheet-music {
+    position: relative;
+    z-index: -2;
+    animation-delay: 1s;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-name: sight-reading;
+}
+
+@keyframes sight-reading {
+    from {
+        transform: translateY(0%);
+    }
+    to {
+        transform: translateY(-365%);
+    }
 }
 
 h1 {
@@ -63,7 +84,6 @@ h1 {
     font-weight: 400;
     font-style: normal;
     font-size: 5em;
-    /* color:rgb(241, 108, 36); */
     color:rgb(36, 36, 36);
     text-align: center;
 }
