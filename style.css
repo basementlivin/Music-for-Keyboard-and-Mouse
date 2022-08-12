@@ -60,27 +60,7 @@ p {
     top: 400px;
     left: 100px;
     right: 100px;
-
-
-    /* display: grid;
-    grid-template-columns: 18% auto 18%; */
-
-    /* animation-delay: 1s;
-    animation-duration: 1s;
-    animation-timing-function: ease;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    animation-name: sight-reading; */
 }
-
-/* @keyframes sight-reading {
-    from {
-        transform: translateY(-65%);
-    }
-    to {
-        transform: translateY(-200%);
-    }
-} */
 
 h1 {
     font-family: forma-djr-deck, sans-serif;

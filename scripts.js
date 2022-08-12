@@ -2,28 +2,28 @@ const prompts = [
   {
     "id": "prompt-1",
     "domEvent": "keydown",
-    "amount": 3,
+    "amount": 15,
     "keyCode": "KeyB",
-    "text": "Lightly tap the B key 3 times."
+    "text": "Lightly tap the B key 15 times."
   },
   {
     "id": "prompt-2",
     "domEvent": "keydown",
-    "amount": 10,
+    "amount": 4,
     "keyCode": "KeyS",
-    "text": "Hit the S key 10 times."
+    "text": "Hit the S key 4 times."
   },
   {
     "id": "prompt-3",
     "domEvent": "click",
-    "amount": 7,
-    "text": "Click the left mouse button 7 times."
+    "amount": 1,
+    "text": "Left click once."
   },
   {
     "id": "prompt-4",
     "domEvent": "keydown",
     "amount": 20,
-    "keyCode": "Digit1",
+    "keyCode": "Digit1" || "Numpad1",
     "text": "Hit the 1 key 20 times."
   },
   {
@@ -36,15 +36,15 @@ const prompts = [
   {
     "id": "prompt-6",
     "domEvent": "click",
-    "amount": 1,
-    "text": "Left click once."
+    "amount": 2,
+    "text": "Left click twice."
   },
   {
     "id": "prompt-7",
     "domEvent": "keyhold",
-    "duration": 10000,
+    "duration": 2000,
     "keyCode": "KeyG",
-    "text": "Press and hold the G key for 10 seconds, then lift."
+    "text": "Press and hold the G key for 2 seconds, then lift."
   },
   {
     "id": "prompt-8",
@@ -55,25 +55,98 @@ const prompts = [
   {
     "id": "prompt-9",
     "domEvent": "keyhold",
-    "duration": 30000,
-    "keyCode": "Digit6",
-    "text": "Press and hold the 6 key for 30 seconds, then lift."
+    "duration": 8000,
+    "keyCode": "Digit6" || "Numpad6",
+    "text": "Press and hold the 6 key for 8 seconds, then lift."
   },
   {
     "id": "prompt-10",
-    "domEvent": "keyhold",
-    "duration": 4000,
-    "keyCode": "Space",
-    "text": "Press and hold the G key for 4 seconds, then lift."
+    "domEvent": "keydown",
+    "amount": 80,
+    "keyCode": "ArrowUp",
+    "text": "Tap the up arrow until the next prompt appears."
   },
   {
     "id": "prompt-11",
-    "domEvent": "keyhold",
-    "duration": 4000,
+    "domEvent": "keydown",
+    "amount": 8,
     "keyCode": "Space",
-    "text": "Press and hold the G key for 4 seconds, then lift."
+    "text": "Hit the spacebar 8 times."
   },
+  {
+    "id": "prompt-12",
+    "domEvent": "click",
+    "amount": 1,
+    "text": "Left click once."
+  },
+  {
+    "id": "prompt-13",
+    "domEvent": "keydown",
+    "amount": 4,
+    "keyCode": "Space",
+    "text": "Hit the spacebar 4 times."
+  },
+  {
+    "id": "prompt-14",
+    "domEvent": "click",
+    "amount": 2,
+    "text": "Left click twice."
+  },
+  {
+    "id": "prompt-15",
+    "domEvent": "keydown",
+    "amount": 2,
+    "keyCode": "Space",
+    "text": "Hit the spacebar twice."
+  },
+  {
+    "id": "prompt-16",
+    "domEvent": "click",
+    "amount": 2,
+    "text": "Left click twice."
+  },
+  {
+    "id": "prompt-17",
+    "domEvent": "keydown",
+    "amount": 1,
+    "keyCode": "KeyL",
+    "text": "Tap the L key once."
+  },
+  {
+    "id": "prompt-18",
+    "domEvent": "keydown",
+    "amount": 1,
+    "keyCode": "KeyH",
+    "text": "Tap the H key once."
+  },
+  {
+    "id": "prompt-19",
+    "domEvent": "keyhold",
+    "duration": 2000,
+    "keyCode": "KeyO",
+    "text": "Hold down the O key for 2 seconds."
+  },
+  {
+    "id": "prompt-20",
+    "domEvent": "keydown",
+    "amount": 1,
+    "keyCode": "KeyQ",
+    "text": "Tap the Q key once."
+  },
+  {
+    "id": "prompt-21",
+    "domEvent": "keyhold",
+    "duration": 2000,
+    "keyCode": "Digit3" || "Numpad3",
+    "text": "Press and hold the 3 key for 30 seconds."
+  },
+  {
+    "id": "prompt-22",
+    "text": "Keep on listening."
+  }
 ]
+
+// PROMPT UPDATE FUNCTION
 
 let promptIndex = 0;
 
@@ -84,7 +157,6 @@ document.getElementById(domId).innerHTML = newText;
 function updatePrompt(){
   const newPromptIndex = promptIndex + 1
   if (newPromptIndex > (prompts.length - 1)) {
-    console.log("Write more prompts, brotherman!")
   } else {
     promptIndex = newPromptIndex
     const prompt = prompts[newPromptIndex]  
@@ -136,7 +208,7 @@ function keyDownHandler(KeyboardEvent){
   }
 }
 
-// CALCULATE TIME BETWEEN KEYDOWN AND KEYUP EVENTS
+// KEYDOWN DURATION FUNCTION (IN MILLISECONDS)
 
 let startTime = null;
 let keyDownAllowed = true; 
