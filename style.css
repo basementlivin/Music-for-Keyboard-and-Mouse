@@ -10,7 +10,7 @@ body {
     align-items: center;
     align-content: center;
     min-height: 100vh;
-    animation-delay: 2s;
+    animation-delay: 8s;
     animation-duration: 3.5s;
     animation-timing-function: ease;
     animation-iteration-count: 1;

@@ -62,9 +62,9 @@ const prompts = [
   {
     "id": "prompt-10",
     "domEvent": "keydown",
-    "amount": 80,
+    "amount": 42,
     "keyCode": "ArrowUp",
-    "text": "Tap the up arrow until the next prompt appears."
+    "text": "Tap the up arrow 42 times."
   },
   {
     "id": "prompt-11",
@@ -136,7 +136,7 @@ const prompts = [
   {
     "id": "prompt-21",
     "domEvent": "keyhold",
-    "duration": 2000,
+    "duration": 30000,
     "keyCode": "Digit3" || "Numpad3",
     "text": "Press and hold the 3 key for 30 seconds."
   },
