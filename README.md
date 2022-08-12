@@ -3,7 +3,7 @@ A browser-based percussion score for the solo performer.
 
 The user enacts a deadpan piece of percussion music using only their keyboard and mouse (or trackpad). Drawing on traditions of [musique concrète](https://www.frontiersin.org/articles/10.3389/fpsyg.2021.672949/full), [noise music](https://www.theguardian.com/music/2008/nov/10/squarepusher-paul-hegarty-noise), and the chance techniques of [Marcel Duchamp](https://www.moma.org/learn/moma_learning/themes/dada/marcel-duchamp-and-the-readymade/) and [John Cage](https://www.jstor.org/stable/25597623), players are shown a series of prompts that they must complete before moving on to the next one. Instead of traditional musical notation, this score exists as plain text: "Tap the up arrow 42 times", "Press and hold the 3 key for 30 seconds" and so forth. In the relative "silence" of these simple acts, players may begin to pay closer attention to the sounds of their keystrokes and mouse clicks, the drone of their computer, their breath, and the everyday music of their immediate surroundings.
 
-[Click here](https://basementlivin.github.io/Music-for-Mouse-and-Keyboard/) to begin your own performance. It is highly recommended that you pause any music, videos, or podcasts while playing through the prompts in "Music for Keyboard and Mouse."
+[Click here](https://basementlivin.github.io/Music-for-Keyboard-and-Mouse/) to begin your own performance. It is highly recommended that you pause any music, videos, or podcasts while playing through the prompts in "Music for Keyboard and Mouse."
 
 # Screenshots
 <img width="1728" alt="MFKAM_01" src="https://user-images.githubusercontent.com/109049703/184304178-82f55e6b-654c-406c-85f2-52958363d6fd.png">
