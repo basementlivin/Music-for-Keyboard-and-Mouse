@@ -4,14 +4,34 @@ body {
     background: rgba(250, 246, 181, 0.65);
 }
 
+#splashscreen {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
 #main-title {
+    order: 1;
     font-family: forma-djr-deck, sans-serif;
     font-weight: 800;
     font-style: normal;
-    font-size: 8em;
-    /* color:rgb(241, 108, 36); */
+    font-size: 12em;
+    line-height: 0.85;
     color:rgb(36, 36, 36);
-    text-align: center; 
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+p {
+    order: 2;
+    font-family: ibm-plex-mono, sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 2.5em;
+    color:rgb(36, 36, 36);
+    text-align: center;
 }
 
 #splash-background {
@@ -29,15 +49,6 @@ h1 {
     font-style: normal;
     font-size: 5em;
     /* color:rgb(241, 108, 36); */
-    color:rgb(36, 36, 36);
-    text-align: center;
-}
-
-p {
-    font-family: ibm-plex-mono, sans-serif;
-    font-weight: 300;
-    font-style: normal;
-    font-size: 1.5em;
     color:rgb(36, 36, 36);
     text-align: center;
 }

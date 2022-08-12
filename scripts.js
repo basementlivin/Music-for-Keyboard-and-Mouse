@@ -96,7 +96,7 @@ function countKeyDowns(currentPrompt, eventCode){
 }
 
 function keyDownHandler(KeyboardEvent){
-  console.log("Let me tell you about this key:", KeyboardEvent.code)
+  console.log("The keyboard event code is: ", KeyboardEvent.code)
   const currentPrompt = prompts[promptIndex];
   if (currentPrompt["domEvent"] === "keydown") {
     countKeyDowns(currentPrompt, KeyboardEvent.code)
